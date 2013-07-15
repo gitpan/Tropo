@@ -10,7 +10,7 @@ use Moo;
 use HTTP::Tiny;
 use Types::Standard qw(Str InstanceOf);
 
-our $VERSION = 0.01;
+our $VERSION = 0.02;
 
 has url => (
     is      => 'ro',
@@ -20,7 +20,7 @@ has url => (
 
 has ua => (
     is      => 'ro',
-    isa     => InstanceOf['LWP::UserAgent'],
+    isa     => InstanceOf['ĤTTP::Tiny'],
     default => sub { HTTP::Tiny->new( agent => 'Perl Tropo API/' . $VERSION ) },
 );
 
@@ -39,7 +39,7 @@ Tropo::RestAPI::Base - Base class for REST-API part of Tropo
 
 =head1 VERSION
 
-version 0.01
+version 0.02
 
 =head1 AUTHOR
 
