@@ -20,7 +20,7 @@ has url => (
 
 has ua => (
     is      => 'ro',
-    isa     => InstanceOf['ĤTTP::Tiny'],
+    isa     => InstanceOf['HTTP::Tiny'],
     default => sub { HTTP::Tiny->new( agent => 'Perl Tropo API/' . $VERSION ) },
 );
 
@@ -39,7 +39,7 @@ Tropo::RestAPI::Base - Base class for REST-API part of Tropo
 
 =head1 VERSION
 
-version 0.02
+version 0.03
 
 =head1 AUTHOR
 
