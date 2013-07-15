@@ -23,4 +23,4 @@ requires:
   Type::Tiny: 0.008
   URI::Escape: 0
   XML::Simple: 0
-version: 0.03
+version: 0.04
