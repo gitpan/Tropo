@@ -9,8 +9,9 @@ use Moo;
 
 use HTTP::Tiny;
 use Types::Standard qw(Str InstanceOf);
+use URI::Escape qw(uri_escape_utf8);
 
-our $VERSION = 0.02;
+our $VERSION = 0.03;
 
 has url => (
     is      => 'ro',
@@ -29,6 +30,48 @@ has err => (
     isa => Str,
 );
 
+sub get {
+    my ($self, $url, $params) = @_;
+    
+    return if !$url;
+    
+    my $params_string = _get_params_string( $params );
+    my $response      = $self->ua->get( $url . '?' . $params_string );
+    
+    return $response;
+}
+
+sub post {
+    my ($self, $url, $params) = @_;
+    
+    return if !$url;
+    
+    my $params_string = _get_params_string( $params );
+    my $response      = $self->ua->post(
+        $url,
+        {
+            content => $params_string,
+            headers => { 'content-type' => 'application/x-www-form-urlencoded' },
+        },
+    );
+    
+    return $response;
+}
+
+sub _get_params_string {
+    my ($params) = @_;
+    
+    return '' if !$params || ref $params ne 'HASH';
+    
+    my @params;
+    while( my @pair = each %{ $params } ) {
+        push @params, join "=", map { uri_escape_utf8( $_ ) } @pair;
+    }
+    
+    return join '&', @params;
+}
+    
+
 1;
 __END__
 =pod
@@ -39,7 +82,7 @@ Tropo::RestAPI::Base - Base class for REST-API part of Tropo
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 AUTHOR
 

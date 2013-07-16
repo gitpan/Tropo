@@ -32,7 +32,7 @@ my %WriteMakefileArgs = (
     "XML::Simple" => 0
   },
   "TEST_REQUIRES" => {},
-  "VERSION" => "0.05",
+  "VERSION" => "0.06",
   "test" => {
     "TESTS" => "t/webapi/*.t"
   }

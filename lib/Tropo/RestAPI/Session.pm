@@ -10,7 +10,7 @@ use XML::Simple;
 
 extends 'Tropo::RestAPI::Base';
 
-our $VERSION = 0.03;
+our $VERSION = 0.04;
 
 sub create {
     my ($self, %param) = @_;
@@ -22,7 +22,7 @@ sub create {
     $param{action} = 'create';
     
     my $session_url = $self->url . 'sessions';
-    my $response    = $self->ua->get(
+    my $response    = $self->get(
         $session_url,
         \%param,
     );
@@ -33,7 +33,7 @@ sub create {
     }
     
     if ( !$response->{success} ) {
-        $self->err( $response->{reason} );
+        $self->err( $response->{reason} . ': ' . $response->{content} );
         return;
     }
     
@@ -58,7 +58,7 @@ Tropo::RestAPI::Session - Tropo session handling
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 SYNOPSIS
 
