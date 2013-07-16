@@ -88,7 +88,7 @@ Tropo::RestAPI::Base - Base class for REST-API part of Tropo
 
 =head1 VERSION
 
-version 0.07
+version 0.08
 
 =head1 AUTHOR
 
