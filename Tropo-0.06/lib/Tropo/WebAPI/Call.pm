@@ -1,6 +1,6 @@
-package Tropo::WebAPI::Say;
+package Tropo::WebAPI::Call;
 
-# ABSTRACT: "Say" something with Tropo
+# ABSTRACT: "Call" someone via Tropo API
 
 use strict;
 use warnings;
@@ -15,25 +15,43 @@ Tropo::WebAPI::Base::register();
 
 our $VERSION = 0.01;
 
-has value => (
+has to => (
     is       => 'ro',
     isa      => Str,
     required => 1,
 );
 
-has as => (
+has from => (
+    is  => 'ro',
+    isa => Str,
+    exclude_from_json => 1,
+);
+
+has ['network', 'channel'] => (
     is  => 'ro',
     isa => Str,
 );
 
-has event => (
+has 'answer_on_media' => (
     is  => 'ro',
-    isa => Str,
+    isa => Bool,
 );
 
-has voice => (
+has timeout => (
     is  => 'ro',
     isa => Int,
+);
+
+has headers => (
+    is  => 'ro',
+    isa => ArrayRef[Str],
+);
+
+has recording => (
+    is  => 'ro',
+    isa => Dict[
+        name => Str,
+    ],
 );
 
 has allow_signals => (
@@ -44,7 +62,7 @@ has allow_signals => (
 sub BUILDARGS {
    my ( $class, @args ) = @_;
  
-  unshift @args, "value" if @args % 2 == 1;
+  unshift @args, "to" if @args % 2 == 1;
  
   return { @args };
 }
@@ -56,11 +74,11 @@ __END__
 
 =head1 NAME
 
-Tropo::WebAPI::Say - "Say" something with Tropo
+Tropo::WebAPI::Call - "Call" someone via Tropo API
 
 =head1 VERSION
 
-version 0.07
+version 0.06
 
 =head1 AUTHOR
 

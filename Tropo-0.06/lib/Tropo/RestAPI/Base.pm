@@ -8,7 +8,7 @@ use warnings;
 use Moo;
 
 use HTTP::Tiny;
-use Types::Standard qw(Str InstanceOf Bool);
+use Types::Standard qw(Str InstanceOf);
 use URI::Escape qw(uri_escape_utf8);
 
 our $VERSION = 0.03;
@@ -28,12 +28,6 @@ has ua => (
 has err => (
     is  => 'rw',
     isa => Str,
-);
-
-has redirect => (
-    is      => 'ro',
-    isa     => Bool,
-    default => sub { 0; },
 );
 
 sub get {
@@ -88,7 +82,7 @@ Tropo::RestAPI::Base - Base class for REST-API part of Tropo
 
 =head1 VERSION
 
-version 0.07
+version 0.06
 
 =head1 AUTHOR
 

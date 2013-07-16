@@ -60,7 +60,7 @@ Tropo::WebAPI::Say - "Say" something with Tropo
 
 =head1 VERSION
 
-version 0.07
+version 0.06
 
 =head1 AUTHOR
 
