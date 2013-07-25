@@ -65,7 +65,7 @@ Tropo::RestAPI::Session - Tropo session handling
 
 =head1 VERSION
 
-version 0.08
+version 0.1
 
 =head1 SYNOPSIS
 

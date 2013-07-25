@@ -12,7 +12,7 @@ use JSON;
 
 use overload '""' => \&json;
 
-our $VERSION = 0.08;
+our $VERSION = 0.10;
 
 has objects => (
     is      => 'rw',
@@ -39,7 +39,7 @@ for my $subname ( qw(call say) ) {
     };
 }
 
-sub json {
+sub perl {
     my ($self) = @_;
     
     my @objects;
@@ -56,7 +56,18 @@ sub json {
         }
     }
     
-    my $string = JSON->new->encode( { tropo => \@objects } );
+    my $data = {
+        tropo => \@objects,
+    };
+    
+    return @objects;
+}
+
+sub json {
+    my ($self) = @_;
+    
+    my $data   = $self->perl;
+    my $string = JSON->new->encode( $data );
     
     return $string;
 }
@@ -81,7 +92,7 @@ Tropo - Use the TropoAPI via Perl
 
 =head1 VERSION
 
-version 0.08
+version 0.1
 
 =head1 SYNOPSIS
 

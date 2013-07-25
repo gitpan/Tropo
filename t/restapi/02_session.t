@@ -20,12 +20,4 @@ $result = $session->create( token => $token );
 ok !$result, 'Cannot create session - invalid token';
 is $session->err, 'Tropo session launch failed!';
 
-
-$session = Tropo::RestAPI::Session->new(
-   url => 'http://this-url-does-not-exist.com/',
-);
-$result = $session->create( token => $token );
-ok !$result, 'Cannot create session - invalid url';
-is $session->err, 'Reponse from differen URL as the request was sent to!';
-
 done_testing();
