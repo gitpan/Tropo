@@ -68,7 +68,7 @@ Tropo::WebAPI::Base - Base class for Web-API part of Tropo API
 
 =head1 VERSION
 
-version 0.1
+version 0.11
 
 =head1 AUTHOR
 
