@@ -61,7 +61,7 @@ Tropo::WebAPI::Say - "Say" something with Tropo
 
 =head1 VERSION
 
-version 0.12
+version 0.13
 
 =head1 AUTHOR
 

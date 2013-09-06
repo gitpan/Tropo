@@ -12,7 +12,7 @@ use JSON;
 
 use overload '""' => \&json;
 
-our $VERSION = 0.12;
+our $VERSION = 0.13;
 
 has objects => (
     is      => 'rw',
@@ -101,7 +101,7 @@ Tropo - Use the TropoAPI via Perl
 
 =head1 VERSION
 
-version 0.12
+version 0.13
 
 =head1 SYNOPSIS
 
