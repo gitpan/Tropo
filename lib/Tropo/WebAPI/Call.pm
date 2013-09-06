@@ -70,6 +70,7 @@ sub BUILDARGS {
 1;
 
 __END__
+
 =pod
 
 =head1 NAME
@@ -78,7 +79,7 @@ Tropo::WebAPI::Call - "Call" someone via Tropo API
 
 =head1 VERSION
 
-version 0.11
+version 0.12
 
 =head1 AUTHOR
 
@@ -93,4 +94,3 @@ This is free software, licensed under:
   The Artistic License 2.0 (GPL Compatible)
 
 =cut
-

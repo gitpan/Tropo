@@ -79,7 +79,9 @@ sub _get_params_string {
     
 
 1;
+
 __END__
+
 =pod
 
 =head1 NAME
@@ -88,7 +90,7 @@ Tropo::RestAPI::Base - Base class for REST-API part of Tropo
 
 =head1 VERSION
 
-version 0.11
+version 0.12
 
 =head1 AUTHOR
 
@@ -103,4 +105,3 @@ This is free software, licensed under:
   The Artistic License 2.0 (GPL Compatible)
 
 =cut
-

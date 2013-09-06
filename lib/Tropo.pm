@@ -12,7 +12,7 @@ use JSON;
 
 use overload '""' => \&json;
 
-our $VERSION = 0.11;
+our $VERSION = 0.12;
 
 has objects => (
     is      => 'rw',
@@ -45,15 +45,24 @@ sub perl {
     my @objects;
     my $last_type = '';
     
-    for my $object ( @{ $self->objects } ) {
+    for my $index ( 0 .. $#{ $self->objects } ) {
+        my $object      = $self->objects->[$index];
+        my $next_object = $self->objects->[$index+1];
+
         my ($type,$obj) = %{ $object };
+        my ($next_type) = %{ $next_object || { '' => ''} };
         
-        if ( $type ne $last_type ) {
+        if ( $type ne $last_type && $type eq $next_type ) {
             push @objects, { $type => [ $obj->to_hash ] };
+        }
+        elsif ( $type ne $last_type && $type ne $next_type ) {
+            push @objects, { $type => $obj->to_hash };
         }
         else {
             push @{ $objects[-1]->{$type} }, $obj->to_hash;
         }
+
+        $last_type = $type;
     }
     
     my $data = {
@@ -82,7 +91,7 @@ sub add_object {
 
 1;
 
-
+__END__
 
 =pod
 
@@ -92,7 +101,7 @@ Tropo - Use the TropoAPI via Perl
 
 =head1 VERSION
 
-version 0.11
+version 0.12
 
 =head1 SYNOPSIS
 
@@ -130,8 +139,6 @@ Creates this JSON output:
 
 =head1 HOW THE TROPO API WORKS
 
-=cut
-
 =head1 AUTHOR
 
 Renee Baecker <module@renee-baecker.de>
@@ -145,6 +152,3 @@ This is free software, licensed under:
   The Artistic License 2.0 (GPL Compatible)
 
 =cut
-
-
-__END__
