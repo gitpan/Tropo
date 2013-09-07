@@ -4,12 +4,16 @@ META.yml
 Makefile.PL
 README
 dist.ini
+example/ask_for_two_digits.pl
 lib/Tropo.pm
 lib/Tropo/RestAPI/Base.pm
 lib/Tropo/RestAPI/Session.pm
+lib/Tropo/WebAPI/Ask.pm
 lib/Tropo/WebAPI/Base.pm
 lib/Tropo/WebAPI/Call.pm
+lib/Tropo/WebAPI/On.pm
 lib/Tropo/WebAPI/Say.pm
+lib/Tropo/WebAPI/Wait.pm
 t/restapi/02_session.t
 t/webapi/01_tropo.t
 t/webapi/call.t

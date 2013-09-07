@@ -1,12 +1,12 @@
-package Tropo::WebAPI::Say;
+package Tropo::WebAPI::Wait;
 
-# ABSTRACT: "Say" something with Tropo
+# ABSTRACT: "Wait" with Tropo
 
 use strict;
 use warnings;
 
 use Moo;
-use Types::Standard qw(Int Str Bool ArrayRef Dict);
+use Types::Standard qw(Num Int Str Bool ArrayRef Dict);
 use Type::Tiny;
 
 extends 'Tropo::WebAPI::Base';
@@ -15,36 +15,14 @@ Tropo::WebAPI::Base::register();
 
 our $VERSION = 0.01;
 
-has value => (
-    is       => 'ro',
-    isa      => Str,
-    required => 1,
-);
-
-has as => (
-    is  => 'ro',
-    isa => Str,
-);
-
-has event => (
-    is  => 'ro',
-    isa => Str,
-);
-
-has voice => (
-    is  => 'ro',
-    isa => Int,
-);
-
-has allow_signals => (
-    is  => 'ro',
-    isa => ArrayRef[],
-);
+has milliseconds  => (is => 'ro', isa => Int, required => 1);
+has on_signals    => (is => 'ro', isa => Str);
+has allow_signals => (is => 'ro', isa => ArrayRef[]);
 
 sub BUILDARGS {
    my ( $class, @args ) = @_;
  
-  unshift @args, "value" if @args % 2 == 1;
+  unshift @args, "milliseconds" if @args % 2 == 1;
  
   return { @args };
 }
@@ -57,7 +35,7 @@ __END__
 
 =head1 NAME
 
-Tropo::WebAPI::Say - "Say" something with Tropo
+Tropo::WebAPI::Wait - "Wait" with Tropo
 
 =head1 VERSION
 

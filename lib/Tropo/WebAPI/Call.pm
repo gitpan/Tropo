@@ -79,7 +79,7 @@ Tropo::WebAPI::Call - "Call" someone via Tropo API
 
 =head1 VERSION
 
-version 0.13
+version 0.14
 
 =head1 AUTHOR
 

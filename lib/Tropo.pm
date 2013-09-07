@@ -12,7 +12,7 @@ use JSON;
 
 use overload '""' => \&json;
 
-our $VERSION = 0.13;
+our $VERSION = 0.14;
 
 has objects => (
     is      => 'rw',
@@ -20,7 +20,7 @@ has objects => (
     default => sub { [] },
 );
 
-for my $subname ( qw(call say) ) {
+for my $subname ( qw(call say ask on wait) ) {
     my $name     = ucfirst $subname;
     my @parts    = qw/Tropo WebAPI/;
     
@@ -51,11 +51,11 @@ sub perl {
 
         my ($type,$obj) = %{ $object };
         my ($next_type) = %{ $next_object || { '' => ''} };
-        
-        if ( $type ne $last_type && $type eq $next_type ) {
+
+        if ( $type ne $last_type && $type eq $next_type && $type ne 'on' ) {
             push @objects, { $type => [ $obj->to_hash ] };
         }
-        elsif ( $type ne $last_type && $type ne $next_type ) {
+        elsif ( $type ne $last_type && $type ne $next_type || $type eq 'on' ) {
             push @objects, { $type => $obj->to_hash };
         }
         else {
@@ -101,7 +101,7 @@ Tropo - Use the TropoAPI via Perl
 
 =head1 VERSION
 
-version 0.13
+version 0.14
 
 =head1 SYNOPSIS
 
