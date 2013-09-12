@@ -1,6 +1,10 @@
 Change history for Tropo
 ========================
 
+0.16 12-09-2013T12:01:35
+
+  Fixed test failures (thanks to CPANTesters to spot those problems)
+
 0.15 08-09-2013T21:00:42
 
   Added more documentation

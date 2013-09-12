@@ -24,15 +24,16 @@ my %WriteMakefileArgs = (
     "HTTP::Tiny" => 0,
     "IO::Socket::SSL" => "1.56",
     "JSON" => "2.53",
-    "Moo" => 0,
+    "Moo" => "1.003001",
     "Net::SSLeay" => "1.49",
     "Path::Tiny" => 0,
     "Type::Tiny" => "0.008",
+    "URI" => 0,
     "URI::Escape" => 0,
     "XML::Simple" => 0
   },
   "TEST_REQUIRES" => {},
-  "VERSION" => "0.15",
+  "VERSION" => "0.16",
   "test" => {
     "TESTS" => "t/restapi/*.t t/webapi/*.t"
   }

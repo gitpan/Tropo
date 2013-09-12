@@ -38,7 +38,7 @@ Tropo::WebAPI::On - "On" something with Tropo
 
 =head1 VERSION
 
-version 0.15
+version 0.16
 
 =head1 AUTHOR
 
